@@ -1,0 +1,503 @@
+/* RSVP Section */
+.rsvp-section {
+    padding: clamp(4rem, 8vw, 6rem) 5%;
+    background: white;
+}
+
+.rsvp-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+}
+
+.rsvp-info h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    font-weight: 400;
+    color: var(--pastel-green-dark);
+    margin-bottom: 1.5rem;
+}
+
+.rsvp-info p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.rsvp-details {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.info-box {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--pastel-green-pale), white);
+    border-radius: 10px;
+    border-left: 3px solid var(--pastel-green);
+}
+
+.info-box h4 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--pastel-green-dark);
+    margin-bottom: 0.8rem;
+}
+
+.info-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* RSVP Form */
+.rsvp-form {
+    position: relative;
+    background: linear-gradient(135deg, var(--pastel-green-pale), var(--cream));
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(180, 204, 190, 0.15);
+}
+
+.form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.form-group {
+    margin-bottom: 1.8rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 0.7rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.9rem;
+    border: 1px solid rgba(180, 204, 190, 0.3);
+    border-radius: 8px;
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--text-dark);
+    background: white;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--pastel-green);
+    box-shadow: 0 0 0 3px rgba(180, 204, 190, 0.1);
+    transform: translateY(-2px);
+}
+
+input[type="text"].error,
+input[type="email"].error,
+select.error {
+    border-color: #E74C3C;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: 'Lora', serif;
+}
+
+select {
+    cursor: pointer;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.7rem;
+    cursor: pointer;
+    accent-color: var(--pastel-green);
+}
+
+.radio-label span {
+    color: var(--text-dark);
+}
+
+.error-message {
+    display: block;
+    color: #E74C3C;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    min-height: 1.2rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--pastel-green);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.25s ease;
+}
+
+.submit-btn:hover {
+    background: var(--pastel-green-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(180, 204, 190, 0.3);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+    cursor: wait;
+    opacity: 0.82;
+    transform: none;
+    box-shadow: none;
+}
+
+.submit-btn.is-loading {
+    background: var(--pastel-green-dark);
+}
+
+.submit-btn.is-loading .submit-btn-label {
+    opacity: 0.96;
+}
+
+.rsvp-loading-modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(73, 63, 50, 0.24);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+    z-index: 2500;
+}
+
+.rsvp-loading-modal.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.rsvp-loading-dialog {
+    position: relative;
+    width: min(100%, 24rem);
+    padding: 2rem 1.7rem 1.8rem;
+    border-radius: 1.7rem;
+    text-align: center;
+    background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.96), rgba(250, 244, 235, 0.94) 42%, rgba(239, 229, 214, 0.94) 100%);
+    border: 1px solid rgba(189, 151, 89, 0.2);
+    box-shadow:
+        0 24px 60px rgba(72, 56, 37, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    overflow: hidden;
+}
+
+.rsvp-loading-dialog::before,
+.rsvp-loading-dialog::after {
+    content: '';
+    position: absolute;
+    width: 11rem;
+    height: 11rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(195, 222, 206, 0.34), transparent 72%);
+    pointer-events: none;
+}
+
+.rsvp-loading-dialog::before {
+    top: -5.5rem;
+    left: -4rem;
+}
+
+.rsvp-loading-dialog::after {
+    right: -4rem;
+    bottom: -5.5rem;
+    background: radial-gradient(circle, rgba(217, 190, 143, 0.26), transparent 72%);
+}
+
+.rsvp-loading-bloom {
+    position: relative;
+    width: 5.75rem;
+    height: 5.75rem;
+    margin: 0 auto 1rem;
+}
+
+.rsvp-loading-petal {
+    --rotation: 0deg;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.35rem;
+    height: 2rem;
+    border-radius: 1rem 1rem 0.45rem 1rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(239, 206, 152, 0.95));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.78),
+        0 8px 18px rgba(174, 132, 63, 0.18);
+    transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-1.55rem) scale(0.92);
+    transform-origin: center center;
+    animation: rsvp-petal-drift 1.5s ease-in-out infinite;
+}
+
+.rsvp-loading-petal:nth-child(1) {
+    --rotation: 0deg;
+    animation-delay: 0s;
+}
+
+.rsvp-loading-petal:nth-child(2) {
+    --rotation: 60deg;
+    animation-delay: 0.12s;
+}
+
+.rsvp-loading-petal:nth-child(3) {
+    --rotation: 120deg;
+    animation-delay: 0.24s;
+}
+
+.rsvp-loading-petal:nth-child(4) {
+    --rotation: 180deg;
+    animation-delay: 0.36s;
+}
+
+.rsvp-loading-petal:nth-child(5) {
+    --rotation: 240deg;
+    animation-delay: 0.48s;
+}
+
+.rsvp-loading-petal:nth-child(6) {
+    --rotation: 300deg;
+    animation-delay: 0.6s;
+}
+
+.rsvp-loading-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #f6e7bd, #d9a74d);
+    box-shadow:
+        0 0 0 0.28rem rgba(255, 251, 241, 0.75),
+        0 10px 18px rgba(177, 132, 60, 0.18);
+    transform: translate(-50%, -50%);
+    animation: rsvp-core-glow 1.5s ease-in-out infinite;
+}
+
+.rsvp-loading-kicker {
+    margin-bottom: 0.3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(82, 103, 90, 0.75);
+}
+
+.rsvp-loading-title {
+    margin-bottom: 0.5rem;
+    font-family: 'Allura', 'Great Vibes', cursive;
+    font-size: clamp(2.3rem, 5vw, 3rem);
+    font-weight: 400;
+    line-height: 0.95;
+    color: #b17a28;
+}
+
+.rsvp-loading-message {
+    max-width: 18rem;
+    margin: 0 auto;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #425243;
+}
+
+.form-status {
+    min-height: 1.4rem;
+    margin-top: 1rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.form-status.is-success {
+    color: #43684d;
+}
+
+.form-status.is-error {
+    color: #c05040;
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rsvp-petal-drift {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-1.55rem) scale(0.92);
+        opacity: 0.74;
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-1.8rem) scale(1.06);
+        opacity: 1;
+    }
+}
+
+@keyframes rsvp-core-glow {
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(0.94);
+        box-shadow:
+            0 0 0 0.28rem rgba(255, 251, 241, 0.75),
+            0 10px 18px rgba(177, 132, 60, 0.18);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.08);
+        box-shadow:
+            0 0 0 0.45rem rgba(255, 251, 241, 0.86),
+            0 12px 22px rgba(177, 132, 60, 0.24);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rsvp-loading-petal,
+    .rsvp-loading-core {
+        animation: none;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rsvp-section {
+        padding: 4rem 5%;
+    }
+
+    .rsvp-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .rsvp-info h2 {
+        font-size: 2.3rem;
+    }
+
+    .rsvp-info p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .rsvp-form {
+        padding: 1.5rem;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .radio-label {
+        align-items: flex-start;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .rsvp-form {
+        padding: 1.15rem;
+    }
+
+    .rsvp-loading-dialog {
+        padding: 1.8rem 1.2rem 1.5rem;
+        border-radius: 1.4rem;
+    }
+
+    .rsvp-loading-bloom {
+        width: 5rem;
+        height: 5rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .rsvp-loading-message {
+        font-size: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    .submit-btn {
+        padding: 1rem;
+        font-size: 0.88rem;
+    }
+}

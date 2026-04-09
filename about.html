@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Kees & Desz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo" aria-label="Kees and Desz home">
+                <img src="assets/logo.png" alt="">
+            </a>
+            <ul class="nav-menu" id="site-navigation">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="events.html">Entourage</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="rsvp.html">RSVP</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
+                    <svg class="music-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <g class="play-icon">
+                            <path d="M8 5v14l11-7z"/>
+                        </g>
+                        <g class="pause-icon">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </g>
+                    </svg>
+                    <span class="music-label">Play</span>
+                </button>
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-navigation">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title fade-in-up">Our Love Story</h1>
+            <p class="page-subtitle fade-in-up" style="animation-delay: 0.2s;">A journey of love and devotion</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content fade-in">
+                    <h2 class="section-title">How We Met</h2>
+                    <p>
+                        Our story didn't start with grand gestures or sweeping romance, it started with a laugh.
+                        Back in college, she was the clumsy girl who always trip over nothing and he was the grumpy
+                        guy who somehow always seemed annoyed. Due to a common friend their paths crossed in the school
+                        gym, hallways, and in small moments.
+                    </p>
+                    <p>
+                        Life took them in different directions for a while, and they lost touch. However, as time
+                        would have it, they found each other again unexpectedly. This time, they saw each other
+                        clearly: not just the clumsy girl or the grumpy guy, but two people who made each other laugh,
+                        feel safe, and simply happy.
+                    </p>
+                    <p>
+                        We discovered that love isn't about grand gestures it's about the small, everyday things:
+                        teasing each other, sharing silly jokes, offering comfort when days are tough, and celebrating
+                        the little victories together. Our journey has been filled with growth, patience, and countless
+                        memories that have shaped a bond stronger than either of them could have imagined.
+                    </p>
+                </div>
+                <div class="story-image fade-in">
+                    <img
+                        class="story-photo"
+                        src="assets/aboutus-1.jpg"
+                        alt="Kees and Desz together"
+                        loading="lazy"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <audio id="bgMusic" src="music/music.mp3" preload="auto" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>

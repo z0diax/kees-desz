@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Kees & Desz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="faq.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo" aria-label="Kees and Desz home">
+                <img src="assets/logo.png" alt="">
+            </a>
+            <ul class="nav-menu" id="site-navigation">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html">Entourage</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="rsvp.html">RSVP</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
+                    <svg class="music-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <g class="play-icon">
+                            <path d="M8 5v14l11-7z"/>
+                        </g>
+                        <g class="pause-icon">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </g>
+                    </svg>
+                    <span class="music-label">Play</span>
+                </button>
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-navigation">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header faq-page-header">
+        <div class="page-header-content">
+            <h1 class="page-title fade-in-up">FAQ</h1>
+            <p class="page-subtitle fade-in-up" style="animation-delay: 0.2s;">Helpful answers before the celebration</p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-intro fade-in-up" style="animation-delay: 0.1s;">
+                <h2 class="section-title">Common Questions</h2>
+                <p>
+                    A few quick answers for our guests. If you still need help, you can always contact Kees or Desz directly.
+                </p>
+            </div>
+
+            <div class="faq-list">
+                <details class="faq-item fade-in-up" style="animation-delay: 0.15s;" open>
+                    <summary>What time do I need to arrive at the church?</summary>
+                    <p>
+                        The entourage procession will strictly start at <strong>3:30 PM</strong>. This will be followed by the bridal march and the wedding ceremony proper.
+                        Please arrive at least one hour ahead of the ceremony and consider the traffic and travel time.
+                    </p>
+                    <p>In every wedding day, the bride should be the last person to arrive.</p>
+                </details>
+
+                <details class="faq-item fade-in-up" style="animation-delay: 0.2s;">
+                    <summary>What time will the program start?</summary>
+                    <p>
+                        There will be a pre-program at <strong>5:30 PM</strong>. Appetizers and refreshments will be served, so mingle with others and make memories with our photo booth.
+                    </p>
+                    <p>The main program will start at <strong>6:00 PM</strong>.</p>
+                </details>
+
+                <details class="faq-item fade-in-up" style="animation-delay: 0.25s;">
+                    <summary>Can I bring a guest or date?</summary>
+                    <p>
+                        Unfortunately, no. We hope you understand that we can no longer accommodate those who are not on our guest list due to limited seats.
+                        Each seat has a name assigned.
+                    </p>
+                </details>
+
+                <details class="faq-item fade-in-up" style="animation-delay: 0.3s;">
+                    <summary>Can we take photos or videos?</summary>
+                    <p>
+                        Please keep our ceremony <strong>camera-free</strong>. We hired an amazing team to capture the moments.
+                        Though our "I Do's" are unplugged, our reception is not. Once we finish our first kiss, you are free to take shots.
+                    </p>
+                    <p>
+                        Most importantly, do not block the view of our hired professional photo and video team.
+                        We promise to share the photos after the wedding.
+                    </p>
+                </details>
+
+                <details class="faq-item fade-in-up" style="animation-delay: 0.35s;">
+                    <summary>Can we seat anywhere during the reception?</summary>
+                    <p>
+                        No. We planned a seating arrangement for our guests' convenience and group familiarity.
+                        Our coordinator will gladly assist you to your designated seats.
+                    </p>
+                </details>
+
+                <details class="faq-item fade-in-up" style="animation-delay: 0.4s;">
+                    <summary>Do you have any gift preference?</summary>
+                    <p>
+                        As love is what this day is all about, your presence is something we could not celebrate without.
+                        We are truly grateful for your time and effort just to be with us during this holiday season.
+                    </p>
+                    <p>
+                        But if a present is your desire, we would be honored with a cash gift in lieu of our ongoing house renovation
+                        and to help us save for our future life together.
+                    </p>
+                </details>
+
+                <details class="faq-item fade-in-up" style="animation-delay: 0.45s;">
+                    <summary>What should we wear?</summary>
+                    <p>We'd love to see you dress up for our big day. Dress code is <strong>formal attire</strong>.</p>
+                    <p><strong>Ladies:</strong> Floor-length, tea-length, or midi-formal dresses.</p>
+                    <p><strong>Gentlemen:</strong> Long sleeves and slacks or trousers.</p>
+                    <p>
+                        Please refer to the color palette in the invitation. Strictly no jeans, rubber shoes, slippers,
+                        and any white-colored dress, please.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <audio id="bgMusic" src="music/music.mp3" preload="auto" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>

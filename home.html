@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kees & Desz - Wedding</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo" aria-label="Kees and Desz home">
+                <img src="assets/logo.png" alt="">
+            </a>
+            <ul class="nav-menu" id="site-navigation">
+                <li><a href="home.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html">Entourage</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="rsvp.html">RSVP</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
+                    <svg class="music-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <g class="play-icon">
+                            <path d="M8 5v14l11-7z"/>
+                        </g>
+                        <g class="pause-icon">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </g>
+                    </svg>
+                    <span class="music-label">Play</span>
+                </button>
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-navigation">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background" aria-hidden="true"></div>
+
+        <div class="hero-layout">
+            <figure class="hero-photo-card hero-photo-card-left fade-in-up" style="animation-delay: 0.16s;">
+                <div class="hero-photo-frame">
+                    <div class="hero-photo-slot">
+                        <img
+                            class="hero-photo-image"
+                            src="assets/kees-desz1.jpg"
+                            alt="Portrait of Kees and Desz"
+                            loading="eager"
+                            fetchpriority="high"
+                        >
+                    </div>
+                </div>
+            </figure>
+
+            <div class="hero-content">
+                <div class="hero-copy">
+                    <p class="hero-intro fade-in-up" style="animation-delay: 0.15s;">
+                        <span>Together</span>
+                        <span>with their families</span>
+                    </p>
+                    <h1 class="hero-title fade-in-up" style="animation-delay: 0.2s;">
+                        <span class="bride">Kees</span>
+                        <span class="ampersand">&</span>
+                        <span class="groom">Desz</span>
+                    </h1>
+                    <p class="hero-invitation fade-in-up" style="animation-delay: 0.4s;">
+                        Invite you to their wedding celebration
+                    </p>
+                    <p class="hero-details fade-in-up" style="animation-delay: 0.6s;">
+                        <span class="hero-date">June 27th, 2026</span>
+                        <span class="hero-divider">|</span>
+                        <span class="hero-location">Cancabato Bay, San Jose</span>
+                    </p>
+                </div>
+
+                <div class="hero-actions">
+                    <div
+                        class="hero-countdown fade-in-up"
+                        style="animation-delay: 0.7s;"
+                        data-countdown-target="2026-06-27T00:00:00+08:00"
+                        aria-label="Countdown to June 27, 2026"
+                    >
+                        <div class="hero-countdown-group">
+                            <span class="hero-countdown-value" data-unit="days">00</span>
+                            <span class="hero-countdown-label">Days</span>
+                        </div>
+                        <span class="hero-countdown-separator">:</span>
+                        <div class="hero-countdown-group">
+                            <span class="hero-countdown-value" data-unit="hours">00</span>
+                            <span class="hero-countdown-label">Hours</span>
+                        </div>
+                        <span class="hero-countdown-separator">:</span>
+                        <div class="hero-countdown-group">
+                            <span class="hero-countdown-value" data-unit="minutes">00</span>
+                            <span class="hero-countdown-label">Mins</span>
+                        </div>
+                        <span class="hero-countdown-separator">:</span>
+                        <div class="hero-countdown-group">
+                            <span class="hero-countdown-value" data-unit="seconds">00</span>
+                            <span class="hero-countdown-label">Secs</span>
+                        </div>
+                    </div>
+
+                    <a href="rsvp.html" class="cta-button fade-in-up" style="animation-delay: 0.8s;">RSVP Now</a>
+                </div>
+            </div>
+
+            <figure class="hero-photo-card hero-photo-card-right fade-in-up" style="animation-delay: 0.28s;">
+                <div class="hero-photo-frame">
+                    <div class="hero-photo-slot">
+                        <img
+                            class="hero-photo-image"
+                            src="assets/kees-desz2.jpg"
+                            alt="Second portrait of Kees and Desz"
+                            loading="eager"
+                        >
+                    </div>
+                </div>
+            </figure>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro">
+        <div class="intro-panel intro-panel-left">
+            <div class="intro-panel-inner">
+                <h2 class="intro-heading fade-in-up">
+                    <span class="intro-heading-line">
+                        <span class="intro-heading-script">W</span>
+                        <span class="intro-heading-text">edding</span>
+                    </span>
+                    <span class="intro-heading-line">
+                        <span class="intro-heading-script">T</span>
+                        <span class="intro-heading-text">imeline</span>
+                    </span>
+                </h2>
+
+                <div class="timeline-strip fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="timeline-strip-frame">
+                        <img src="assets/wedding-logo-cropped.png" alt="Wedding timeline icons">
+                        <p class="timeline-strip-labels">Ceremony - Photos - Cocktail - Dinner - Party</p>
+                    </div>
+                </div>
+
+                <h3 class="intro-heading intro-heading-reminders fade-in-up" style="animation-delay: 0.15s;">
+                    <span class="intro-heading-line">
+                        <span class="intro-heading-script">R</span>
+                        <span class="intro-heading-text">eminders</span>
+                    </span>
+                </h3>
+
+                <div class="reminders-card fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="reminder-row">
+                        <div class="reminder-copy">Be there on time</div>
+                        <img class="reminder-icon-image" src="assets/be-there-on-time-cropped.png" alt="Clock reminder icon">
+                    </div>
+                    <div class="reminder-row">
+                        <div class="reminder-copy">Finish the event</div>
+                        <img class="reminder-icon-image" src="assets/finish-the-event-cropped.png" alt="Wedding reminder icon">
+                    </div>
+                    <div class="reminder-row">
+                        <div class="reminder-copy">Have fun!</div>
+                        <img class="reminder-icon-image" src="assets/have-fun-cropped.png" alt="Celebration reminder icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-panel intro-panel-right">
+            <div class="intro-panel-inner">
+                <h2 class="intro-heading intro-heading-attire fade-in-up">
+                    <span class="intro-heading-line">
+                        <span class="intro-heading-script">A</span>
+                        <span class="intro-heading-text">ttire</span>
+                    </span>
+                    <span class="intro-heading-line">
+                        <span class="intro-heading-script">G</span>
+                        <span class="intro-heading-text">uide</span>
+                    </span>
+                </h2>
+
+                <p class="attire-intro fade-in-up" style="animation-delay: 0.1s;">
+                    We encourage you to dress according to our wedding theme:
+                </p>
+
+                <div class="attire-swatches fade-in-up" style="animation-delay: 0.15s;">
+                    <span class="attire-swatch swatch-sage"></span>
+                    <span class="attire-swatch swatch-olive"></span>
+                    <span class="attire-swatch swatch-champagne"></span>
+                    <span class="attire-swatch swatch-gold"></span>
+                </div>
+
+                <div class="attire-layout">
+                    <div class="attire-looks fade-in-up" style="animation-delay: 0.2s;">
+                        <div class="attire-look-card">
+                            <img src="assets/guest-cropped.png" alt="Guest attire examples">
+                        </div>
+                        <div class="attire-look-card">
+                            <img src="assets/sponsors-cropped.png" alt="Sponsor attire examples">
+                        </div>
+                    </div>
+
+                    <div class="attire-guide-text fade-in-up" style="animation-delay: 0.25s;">
+                        <div class="attire-guide-block">
+                            <h4>For Guests:</h4>
+                            <p><strong>Ladies:</strong> Long gowns or cocktail / sundresses</p>
+                            <p><strong>Gentlemen:</strong> Polo or long sleeves and slacks</p>
+                        </div>
+
+                        <div class="attire-guide-block">
+                            <h4>For Principal Sponsors / Secondary Sponsors:</h4>
+                            <p><strong>Ladies:</strong> Filipiniana / long gown</p>
+                            <p><strong>Gentlemen:</strong> Barong / tan or beige slacks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gentle-reminders-section">
+        <div class="container">
+            <div class="gentle-reminders-paper">
+                <div class="gentle-reminders-photos" aria-hidden="true">
+                    <figure class="gentle-photo gentle-photo-left fade-in-up" style="animation-delay: 0.08s;">
+                        <img src="assets/kees-desz1.jpg" alt="">
+                    </figure>
+                    <figure class="gentle-photo gentle-photo-center fade-in-up" style="animation-delay: 0.14s;">
+                        <img src="assets/aboutus-1.jpg" alt="">
+                    </figure>
+                    <figure class="gentle-photo gentle-photo-right fade-in-up" style="animation-delay: 0.2s;">
+                        <img src="assets/kees-desz2.jpg" alt="">
+                    </figure>
+                </div>
+
+                <div class="gentle-reminders-copy">
+                    <h2 class="gentle-reminders-title fade-in-up" style="animation-delay: 0.24s;">Gentle Reminders</h2>
+
+                    <div class="gentle-reminders-grid">
+                        <article class="gentle-reminder-item fade-in-up" style="animation-delay: 0.28s;">
+                            <h3>Children</h3>
+                            <p>
+                                To allow all of our guests to celebrate without distraction, we respectfully request that
+                                the wedding reception be an adults-only event. Thank you for your understanding.
+                            </p>
+                        </article>
+
+                        <article class="gentle-reminder-item fade-in-up" style="animation-delay: 0.34s;">
+                            <h3>Unplugged Ceremony</h3>
+                            <p>
+                                We are having an unplugged ceremony, meaning we kindly ask all guests to put away their
+                                phones and cameras. We want everyone to be fully in the moment with us. Our wonderful
+                                photo and video team will capture all the special moments, and we'll be happy to share
+                                them with you later.
+                            </p>
+                        </article>
+
+                        <article class="gentle-reminder-item fade-in-up" style="animation-delay: 0.4s;">
+                            <h3>Arrival</h3>
+                            <p>
+                                To ensure everything runs smoothly, please arrive at least 30 minutes before the ceremony starts.
+                                This will give you time to find your seat, take in the beautiful setup, and be fully present
+                                for our special moment.
+                            </p>
+                        </article>
+
+                        <article class="gentle-reminder-item fade-in-up" style="animation-delay: 0.46s;">
+                            <h3>Gifts</h3>
+                            <p>
+                                Your presence is already the greatest gift, but if you'd like to give something, cash gifts
+                                are preferred. This will help us start our journey together in the most meaningful way.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <audio id="bgMusic" src="music/music.mp3" preload="auto" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>

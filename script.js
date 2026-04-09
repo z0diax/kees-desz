@@ -1,0 +1,290 @@
+const navbar = document.querySelector('.navbar');
+
+// Navbar scroll effect
+if (navbar) {
+    const syncNavbarScrollState = () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    };
+
+    window.addEventListener('scroll', syncNavbarScrollState);
+    syncNavbarScrollState();
+}
+
+// Mobile navigation
+const navToggleButton = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+if (navbar && navToggleButton && navMenu) {
+    const closeMobileMenu = () => {
+        navbar.classList.remove('menu-open');
+        document.body.classList.remove('menu-open');
+        navToggleButton.setAttribute('aria-expanded', 'false');
+    };
+
+    navToggleButton.addEventListener('click', () => {
+        const isOpen = navbar.classList.toggle('menu-open');
+        document.body.classList.toggle('menu-open', isOpen);
+        navToggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeMobileMenu();
+        }
+    });
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            closeMobileMenu();
+        }
+    });
+}
+
+// Active link highlighting
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    if (link.href === window.location.href) {
+        link.classList.add('active');
+    }
+});
+
+// Smooth scroll for buttons
+document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+
+// RSVP form submission
+const rsvpForm = document.querySelector('#rsvpForm');
+
+if (rsvpForm) {
+    const rsvpSubmitButton = rsvpForm.querySelector('.submit-btn');
+    const rsvpSubmitLabel = rsvpForm.querySelector('.submit-btn-label');
+    const rsvpStatus = rsvpForm.querySelector('#rsvpStatus');
+    const rsvpLoadingModal = document.querySelector('#rsvpLoadingModal');
+    const defaultSubmitLabel = rsvpSubmitLabel ? rsvpSubmitLabel.textContent : 'Submit RSVP';
+
+    const setRsvpStatus = (type, message = '') => {
+        if (!rsvpStatus) {
+            return;
+        }
+
+        rsvpStatus.textContent = message;
+        rsvpStatus.className = 'form-status';
+
+        if (type) {
+            rsvpStatus.classList.add(`is-${type}`);
+        }
+    };
+
+    const setRsvpLoadingState = isLoading => {
+        if (rsvpSubmitButton) {
+            rsvpSubmitButton.disabled = isLoading;
+            rsvpSubmitButton.classList.toggle('is-loading', isLoading);
+
+            if (isLoading) {
+                rsvpSubmitButton.setAttribute('aria-busy', 'true');
+            } else {
+                rsvpSubmitButton.removeAttribute('aria-busy');
+            }
+        }
+
+        if (rsvpSubmitLabel) {
+            rsvpSubmitLabel.textContent = isLoading ? 'Submitting...' : defaultSubmitLabel;
+        }
+
+        if (rsvpLoadingModal) {
+            rsvpLoadingModal.classList.toggle('is-visible', isLoading);
+            rsvpLoadingModal.setAttribute('aria-hidden', isLoading ? 'false' : 'true');
+        }
+    };
+
+    const collectRsvpPayload = form => {
+        const formData = new FormData(form);
+
+        return {
+            fullname: String(formData.get('fullname') || '').trim(),
+            phone: String(formData.get('phone') || '').trim(),
+            attendance: String(formData.get('attendance') || '').trim(),
+            dietary: String(formData.get('dietary') || '').trim(),
+            website: String(formData.get('website') || '').trim()
+        };
+    };
+
+    rsvpForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        setRsvpStatus();
+
+        if (!rsvpForm.checkValidity()) {
+            rsvpForm.reportValidity();
+            setRsvpStatus('error', 'Please complete the required fields before sending your RSVP.');
+            return;
+        }
+
+        setRsvpLoadingState(true);
+
+        try {
+            const response = await fetch('/api/rsvp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(collectRsvpPayload(rsvpForm))
+            });
+
+            let result = {};
+
+            try {
+                result = await response.json();
+            } catch (error) {
+                result = {};
+            }
+
+            if (!response.ok || result.ok === false) {
+                throw new Error(result.message || 'Unable to save your RSVP right now. Please try again.');
+            }
+
+            rsvpForm.reset();
+            setRsvpStatus(
+                'success',
+                result.message || 'Thank you for your RSVP! We look forward to celebrating with you.'
+            );
+        } catch (error) {
+            setRsvpStatus(
+                'error',
+                error instanceof Error
+                    ? error.message
+                    : 'Unable to save your RSVP right now. Please try again.'
+            );
+        } finally {
+            setRsvpLoadingState(false);
+        }
+    });
+}
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+});
+
+// Navbar music control
+const musicToggleButton = document.querySelector('.music-toggle');
+const backgroundMusic = document.querySelector('#bgMusic');
+
+if (musicToggleButton && backgroundMusic) {
+    const musicLabel = musicToggleButton.querySelector('.music-label');
+    const autoplayRequested = sessionStorage.getItem('autoplayMusic') === '1';
+    const savedMusicState = sessionStorage.getItem('musicPlaying');
+
+    const updateMusicButton = isPlaying => {
+        musicToggleButton.classList.toggle('is-playing', isPlaying);
+        musicToggleButton.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+        musicToggleButton.setAttribute(
+            'aria-label',
+            isPlaying ? 'Pause background music' : 'Play background music'
+        );
+        if (musicLabel) {
+            musicLabel.textContent = isPlaying ? 'Pause' : 'Play';
+        }
+    };
+
+    const playMusic = async () => {
+        try {
+            await backgroundMusic.play();
+            sessionStorage.setItem('musicPlaying', '1');
+            updateMusicButton(true);
+        } catch (error) {
+            sessionStorage.setItem('musicPlaying', '0');
+            updateMusicButton(false);
+        }
+    };
+
+    const pauseMusic = () => {
+        backgroundMusic.pause();
+        sessionStorage.setItem('musicPlaying', '0');
+        updateMusicButton(false);
+    };
+
+    if (autoplayRequested || savedMusicState === '1') {
+        playMusic();
+    } else {
+        updateMusicButton(false);
+    }
+
+    if (autoplayRequested) {
+        sessionStorage.removeItem('autoplayMusic');
+    }
+
+    musicToggleButton.addEventListener('click', () => {
+        if (backgroundMusic.paused) {
+            playMusic();
+        } else {
+            pauseMusic();
+        }
+    });
+}
+
+// Home hero countdown
+const heroCountdown = document.querySelector('.hero-countdown');
+
+if (heroCountdown) {
+    const targetDate = new Date(heroCountdown.dataset.countdownTarget);
+    const countdownDays = heroCountdown.querySelector('[data-unit="days"]');
+    const countdownHours = heroCountdown.querySelector('[data-unit="hours"]');
+    const countdownMinutes = heroCountdown.querySelector('[data-unit="minutes"]');
+    const countdownSeconds = heroCountdown.querySelector('[data-unit="seconds"]');
+    let countdownInterval;
+
+    const formatCountdownUnit = value => String(value).padStart(2, '0');
+
+    const updateHeroCountdown = () => {
+        const remainingMs = Math.max(targetDate.getTime() - Date.now(), 0);
+        const totalSeconds = Math.floor(remainingMs / 1000);
+
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        countdownDays.textContent = formatCountdownUnit(days);
+        countdownHours.textContent = formatCountdownUnit(hours);
+        countdownMinutes.textContent = formatCountdownUnit(minutes);
+        countdownSeconds.textContent = formatCountdownUnit(seconds);
+
+        if (remainingMs === 0) {
+            clearInterval(countdownInterval);
+        }
+    };
+
+    updateHeroCountdown();
+    countdownInterval = window.setInterval(updateHeroCountdown, 1000);
+}

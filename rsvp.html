@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP - Kees & Desz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="rsvp.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo" aria-label="Kees and Desz home">
+                <img src="assets/logo.png" alt="">
+            </a>
+            <ul class="nav-menu" id="site-navigation">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html">Entourage</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="rsvp.html" class="active">RSVP</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
+                    <svg class="music-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <g class="play-icon">
+                            <path d="M8 5v14l11-7z"/>
+                        </g>
+                        <g class="pause-icon">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </g>
+                    </svg>
+                    <span class="music-label">Play</span>
+                </button>
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-navigation">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title fade-in-up">RSVP</h1>
+            <p class="page-subtitle fade-in-up" style="animation-delay: 0.2s;">We can't wait to celebrate with you</p>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <div class="container">
+            <div class="rsvp-content">
+                <div class="rsvp-info fade-in">
+                    <h2>Join Us!</h2>
+                    <p>
+                        We are so happy to celebrate this special moment with the people we love most.
+                        Please let us know if you will be able to join us by completing the form.
+                        We cannot wait to celebrate with you.
+                    </p>
+                    <p>
+                        Kindly respond to us (Kees or Desz) on or before <strong>May 30, 2026</strong>.
+                    </p>
+                    <div class="rsvp-details">
+                        <div class="info-box">
+                            <h4>Questions?</h4>
+                            <p>
+                                <strong>Email:</strong> keesgarfin89@gmail.com<br>
+                                <strong>Email:</strong> deszchan@gmail.com<br>
+                                <strong>Phone:</strong> +639-932-317-118 <br>
+                                <strong>Phone:</strong> +639-452-116-087
+                            </p>
+                        </div>
+                        <div class="info-box">
+                            <h4>Guest Notes</h4>
+                            <p>
+                                Please share any food allergies, dietary restrictions, or cultural practices
+                                we should be aware of so we can prepare for your visit thoughtfully.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="rsvp-form fade-in" id="rsvpForm">
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullname">Please enter your full name *</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Your full name" autocomplete="name" required>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Will you be able to attend our wedding? *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="yes" required>
+                                <span>Yes, I'll be there to celebrate!</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attendance" value="no" required>
+                                <span>Sorry, I won't be able to attend</span>
+                            </label>
+                        </div>
+                        <span class="error-message"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dietary">Do you have any food allergies/restrictions/cultural practices we should be aware of?</label>
+                        <textarea id="dietary" name="dietary" placeholder="Share any food allergies, dietary restrictions, or cultural practices here"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Contact Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+63 9123 456 789" autocomplete="tel">
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span class="submit-btn-label">Submit RSVP</span>
+                    </button>
+                    <p class="form-status" id="rsvpStatus" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="rsvp-loading-modal" id="rsvpLoadingModal" aria-hidden="true">
+        <div
+            class="rsvp-loading-dialog"
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="rsvpLoadingTitle"
+            aria-describedby="rsvpLoadingMessage"
+        >
+            <div class="rsvp-loading-bloom" aria-hidden="true">
+                <span class="rsvp-loading-petal"></span>
+                <span class="rsvp-loading-petal"></span>
+                <span class="rsvp-loading-petal"></span>
+                <span class="rsvp-loading-petal"></span>
+                <span class="rsvp-loading-petal"></span>
+                <span class="rsvp-loading-petal"></span>
+                <span class="rsvp-loading-core"></span>
+            </div>
+            <p class="rsvp-loading-kicker">One moment please</p>
+            <h2 class="rsvp-loading-title" id="rsvpLoadingTitle">Sealing your RSVP</h2>
+            <p class="rsvp-loading-message" id="rsvpLoadingMessage">
+                We are saving your response to the guest list.
+            </p>
+        </div>
+    </div>
+
+    <audio id="bgMusic" src="music/music.mp3" preload="auto" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>

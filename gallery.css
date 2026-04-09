@@ -1,0 +1,326 @@
+/* Gallery Section */
+.gallery-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(4rem, 8vw, 6rem) 5%;
+    background: linear-gradient(180deg, #fdfbf7 0%, #f6efe4 100%);
+}
+
+.gallery-section::before,
+.gallery-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.gallery-section::before {
+    background-image:
+        url('assets/flower-stamps.png'),
+        url('assets/flower-stamps2.png');
+    background-size:
+        clamp(18rem, 31vw, 32rem),
+        clamp(16rem, 24vw, 24rem);
+    background-position:
+        left -2.5rem top 1.5rem,
+        right 3% top 38%;
+    opacity: 0.34;
+}
+
+.gallery-section::after {
+    background-image:
+        url('assets/flower-stamps3.png'),
+        url('assets/flower-stamps4.png');
+    background-size:
+        clamp(16rem, 23vw, 22rem),
+        clamp(18rem, 29vw, 30rem);
+    background-position:
+        left 8% bottom -2.8rem,
+        right -2.5rem bottom 6%;
+    opacity: 0.3;
+}
+
+.gallery-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    aspect-ratio: 1;
+    cursor: pointer;
+    group: gallery;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--pastel-green), var(--pastel-green-dark));
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.4s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(148, 201, 179, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(5px);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay h4 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    letter-spacing: 0px;
+}
+
+/* Quote Section */
+.quote-section {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(5rem, 8vw, 7rem) 5%;
+    background:
+        radial-gradient(circle at 18% 24%, rgba(212, 235, 224, 0.52), transparent 24%),
+        radial-gradient(circle at 82% 78%, rgba(212, 165, 116, 0.12), transparent 26%),
+        linear-gradient(135deg, #edf7f2 0%, #faf6ef 58%, #f1e7da 100%);
+    text-align: center;
+}
+
+.quote-section::before,
+.quote-section::after {
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.quote-section::before {
+    top: clamp(-0.8rem, 1vw, 0.6rem);
+    left: clamp(-2.6rem, -0.6vw, -0.8rem);
+    width: clamp(20rem, 42vw, 40rem);
+    height: clamp(24rem, 56vw, 48rem);
+    background-image: url('assets/flower-stamps.png');
+    opacity: 0.46;
+}
+
+.quote-section::after {
+    right: clamp(-2rem, -0.4vw, -0.4rem);
+    bottom: clamp(-0.8rem, 0.8vw, 0.6rem);
+    width: clamp(20rem, 40vw, 38rem);
+    height: clamp(20rem, 45vw, 40rem);
+    background-image: url('assets/flower-stamps4.png');
+    opacity: 0.4;
+}
+
+.quote-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.quote {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3.25rem);
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #6a8f7a;
+    line-height: 1.8;
+    animation: fadeInUp 0.8s ease-out;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 0 6px 18px rgba(250, 248, 246, 0.7);
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.84), rgba(250, 245, 235, 0.78));
+    border: 1px solid rgba(201, 180, 145, 0.22);
+    border-radius: 2rem;
+    box-shadow: 0 24px 48px rgba(126, 114, 94, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.quote::before,
+.quote::after {
+    content: '';
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    pointer-events: none;
+}
+
+.quote::before {
+    top: clamp(-1.3rem, -0.5vw, -0.2rem);
+    left: clamp(-0.8rem, 0.3vw, 0.25rem);
+    width: clamp(10rem, 22vw, 18rem);
+    height: clamp(12rem, 26vw, 20rem);
+    background-image: url('assets/flower-stamps2.png');
+    opacity: 0.3;
+}
+
+.quote::after {
+    right: clamp(-0.4rem, 0.2vw, 0.3rem);
+    bottom: clamp(-0.9rem, 0.1vw, -0.15rem);
+    width: clamp(9rem, 20vw, 16rem);
+    height: clamp(10rem, 22vw, 17rem);
+    background-image: url('assets/flower-stamps3.png');
+    opacity: 0.26;
+}
+
+.quote p {
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.quote footer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #647266;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.15s; }
+.fade-in:nth-child(3) { animation-delay: 0.2s; }
+.fade-in:nth-child(4) { animation-delay: 0.25s; }
+.fade-in:nth-child(5) { animation-delay: 0.3s; }
+.fade-in:nth-child(6) { animation-delay: 0.35s; }
+.fade-in:nth-child(7) { animation-delay: 0.4s; }
+.fade-in:nth-child(8) { animation-delay: 0.45s; }
+.fade-in:nth-child(9) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery-section {
+        padding: 4rem 5%;
+    }
+
+    .gallery-section::before {
+        background-size: 14.5rem, 12rem;
+        background-position:
+            left -2.6rem top 1.2rem,
+            right -1.4rem top 47%;
+        opacity: 0.28;
+    }
+
+    .gallery-section::after {
+        background-size: 12rem, 14rem;
+        background-position:
+            left -0.7rem bottom -2.3rem,
+            right -2.1rem bottom 8%;
+        opacity: 0.24;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .gallery-item {
+        aspect-ratio: 4 / 5;
+    }
+
+    .gallery-overlay {
+        top: auto;
+        opacity: 1;
+        align-items: flex-end;
+        padding: 1rem;
+        background: linear-gradient(180deg, rgba(148, 201, 179, 0) 0%, rgba(148, 201, 179, 0.92) 100%);
+    }
+
+    .gallery-overlay h4 {
+        width: 100%;
+        font-size: 1.75rem;
+        text-align: left;
+    }
+
+    .quote {
+        font-size: 1.5rem;
+        padding: 1.75rem 1.2rem 1.9rem;
+        border-radius: 1.5rem;
+    }
+
+    .quote-section::before {
+        top: -0.3rem;
+        left: -2rem;
+        width: 18rem;
+        height: 21rem;
+        opacity: 0.34;
+    }
+
+    .quote-section::after {
+        right: -1.8rem;
+        bottom: -0.4rem;
+        width: 16rem;
+        height: 17rem;
+        opacity: 0.3;
+    }
+
+    .quote::before {
+        width: 9.5rem;
+        height: 11rem;
+        opacity: 0.22;
+    }
+
+    .quote::after {
+        width: 8.8rem;
+        height: 9.8rem;
+        opacity: 0.2;
+    }
+}

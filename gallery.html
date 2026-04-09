@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Kees & Desz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="logo" aria-label="Kees and Desz home">
+                <img src="assets/logo.png" alt="">
+            </a>
+            <ul class="nav-menu" id="site-navigation">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="events.html">Entourage</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="rsvp.html">RSVP</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false">
+                    <svg class="music-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <g class="play-icon">
+                            <path d="M8 5v14l11-7z"/>
+                        </g>
+                        <g class="pause-icon">
+                            <rect x="6" y="4" width="4" height="16"/>
+                            <rect x="14" y="4" width="4" height="16"/>
+                        </g>
+                    </svg>
+                    <span class="music-label">Play</span>
+                </button>
+                <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-navigation">
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                    <span class="nav-toggle-bar"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1 class="page-title fade-in-up">Our Gallery</h1>
+            <p class="page-subtitle fade-in-up" style="animation-delay: 0.2s;">Moments we cherish forever</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>First Date</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>Parisian Romance</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>Engagement</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>Mountain Adventure</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>Beach Sunset</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>The Proposal</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>Getting Ready</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>Walking Down the Aisle</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image"></div>
+                    <div class="gallery-overlay">
+                        <h4>Our Vows</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote class="quote fade-in">
+                <p>"In all the world, there is no love like ours."</p>
+                <footer>- Kees & Desz</footer>
+            </blockquote>
+        </div>
+    </section>
+
+    <audio id="bgMusic" src="music/music.mp3" preload="auto" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>

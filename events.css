@@ -1,0 +1,324 @@
+.entourage-page {
+    background:
+        radial-gradient(circle at top, rgba(251, 248, 241, 0.96), rgba(245, 239, 226, 0.92)),
+        #f7f1e7;
+}
+
+.entourage-section {
+    position: relative;
+    padding: 0 5% 6rem;
+    background: linear-gradient(180deg, #fbf8f1 0%, #f5efe2 100%);
+}
+
+.entourage-card {
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 3.25rem 4rem 3rem;
+    background:
+        radial-gradient(circle at top right, rgba(223, 232, 215, 0.32), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(214, 196, 170, 0.2), transparent 28%),
+        linear-gradient(180deg, rgba(255, 253, 248, 0.95) 0%, rgba(249, 244, 236, 0.96) 100%);
+    border: 1px solid rgba(199, 168, 117, 0.22);
+    box-shadow: 0 24px 50px rgba(119, 102, 75, 0.12);
+    overflow: hidden;
+    isolation: isolate;
+    z-index: 1;
+}
+
+.entourage-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        url('assets/flower-stamps.png'),
+        url('assets/flower-stamps2.png');
+    background-repeat: no-repeat;
+    background-size:
+        clamp(16rem, 25vw, 19rem) auto,
+        clamp(14.5rem, 23vw, 17.5rem) auto;
+    background-position:
+        left -4.75rem top -6.25rem,
+        right -1.5rem top 1rem;
+    opacity: 0.54;
+    pointer-events: none;
+}
+
+.entourage-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        url('assets/flower-stamps3.png'),
+        url('assets/flower-stamps4.png');
+    background-repeat: no-repeat;
+    background-size:
+        clamp(16.5rem, 26vw, 19.5rem) auto,
+        clamp(15rem, 24vw, 18rem) auto;
+    background-position:
+        left -2.25rem bottom -10rem,
+        right -1.75rem bottom 1rem;
+    opacity: 0.48;
+    pointer-events: none;
+}
+
+.entourage-block {
+    position: relative;
+    z-index: 1;
+}
+
+.officiant-block {
+    text-align: center;
+    margin-bottom: 2.8rem;
+}
+
+.entourage-kicker {
+    margin-bottom: 0.5rem;
+    font-family: 'Allura', 'Great Vibes', cursive;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+    text-transform: none;
+    color: #c28c34;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.entourage-name {
+    margin: 0;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #485647;
+    overflow-wrap: anywhere;
+}
+
+.family-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4.5rem;
+    margin-bottom: 2.8rem;
+}
+
+.sponsors-block {
+    text-align: center;
+}
+
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.2rem;
+    margin-top: 1.1rem;
+}
+
+.entourage-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.entourage-list li {
+    margin-bottom: 0.18rem;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    color: #495247;
+    overflow-wrap: anywhere;
+}
+
+.entourage-list-center {
+    margin-top: 1rem;
+}
+
+.entourage-divider {
+    height: 1px;
+    margin: 2.2rem auto;
+    max-width: 12rem;
+    background: linear-gradient(90deg, transparent, rgba(194, 140, 52, 0.6), transparent);
+}
+
+.paired-section {
+    margin-bottom: 1.8rem;
+    text-align: center;
+}
+
+.paired-section-tight {
+    margin-bottom: 2.1rem;
+}
+
+.paired-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.4rem;
+    align-items: start;
+}
+
+.paired-row-compact {
+    gap: 2rem;
+}
+
+.paired-row-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.paired-name {
+    margin: 0;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+    color: #495247;
+    overflow-wrap: anywhere;
+}
+
+.paired-name-compact {
+    font-size: 1.08rem;
+}
+
+.attendants-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4.5rem;
+    margin-bottom: 2.4rem;
+}
+
+.secondary-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.1rem;
+}
+
+.secondary-item {
+    text-align: center;
+}
+
+.secondary-kicker {
+    margin-bottom: 0.35rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.01em;
+}
+
+.bearer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.8rem 2rem;
+    margin-top: 1.6rem;
+}
+
+@media (max-width: 768px) {
+    .entourage-section {
+        padding: 0 5% 4rem;
+    }
+
+    .entourage-card {
+        padding: 2.25rem 1.5rem 2.5rem;
+    }
+
+    .entourage-block,
+    .paired-section,
+    .secondary-item {
+        max-width: 23rem;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .entourage-kicker {
+        font-size: 1.5rem;
+    }
+
+    .entourage-name {
+        font-size: 1.12rem;
+        max-width: 20rem;
+        margin-inline: auto;
+    }
+
+    .family-grid,
+    .sponsors-grid,
+    .attendants-grid,
+    .secondary-grid,
+    .bearer-grid,
+    .paired-row {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .family-grid {
+        margin-bottom: 2rem;
+    }
+
+    .entourage-list {
+        max-width: 20rem;
+        margin-inline: auto;
+        text-align: center;
+    }
+
+    .entourage-list li {
+        font-size: 1rem;
+    }
+
+    .paired-row {
+        justify-items: center;
+    }
+
+    .paired-name,
+    .paired-name-compact {
+        font-size: 1rem;
+        max-width: 20rem;
+    }
+
+    .entourage-divider {
+        margin: 1.8rem auto;
+    }
+
+    .entourage-card::before {
+        background-size:
+            clamp(10.75rem, 42vw, 12.75rem) auto,
+            clamp(9.75rem, 39vw, 11.75rem) auto;
+        background-position:
+            left -4.25rem top -4.75rem,
+            right -2rem top 1rem;
+        opacity: 0.42;
+    }
+
+    .entourage-card::after {
+        background-size:
+            clamp(11rem, 43vw, 13rem) auto,
+            clamp(10rem, 40vw, 12rem) auto;
+        background-position:
+            left -2.75rem bottom -6.5rem,
+            right -2.25rem bottom 0.85rem;
+        opacity: 0.36;
+    }
+}
+
+@media (max-width: 520px) {
+    .entourage-card {
+        padding: 2rem 1.15rem 2.2rem;
+    }
+
+    .entourage-kicker,
+    .secondary-kicker {
+        line-height: 1;
+    }
+
+    .entourage-block,
+    .paired-section,
+    .secondary-item,
+    .entourage-list,
+    .paired-name,
+    .paired-name-compact,
+    .entourage-name {
+        max-width: 100%;
+    }
+
+    .entourage-list li,
+    .paired-name,
+    .paired-name-compact {
+        line-height: 1.35;
+    }
+}
