@@ -227,11 +227,13 @@ body {
 
 /* Shared Page Header */
 .page-header {
+    --page-header-image: url('assets/cover1.jpg');
+    --page-header-position: center center;
     position: relative;
     overflow: hidden;
     isolation: isolate;
     background: linear-gradient(135deg, #edf5f0 0%, #faf6ee 56%, #efe4d5 100%);
-    padding: clamp(3.2rem, 4.8vw, 4rem) 5% clamp(1.4rem, 2.6vw, 2rem);
+    padding: clamp(5.6rem, 9vw, 7.2rem) 5% clamp(3.2rem, 5.6vw, 4.4rem);
     text-align: center;
     margin-top: 66px;
 }
@@ -247,9 +249,34 @@ body {
 .page-header::before {
     background:
         linear-gradient(135deg, rgba(244, 249, 245, 0.84) 0%, rgba(250, 245, 236, 0.66) 48%, rgba(239, 228, 213, 0.8) 100%),
-        url('assets/wedding-bouquet-wedding-decoration-flowers-wedding-floral-arrangements.jpg') center 42% / cover no-repeat;
+        var(--page-header-image) var(--page-header-position) / cover no-repeat;
     opacity: 0.96;
     transform: scale(1.04);
+}
+
+.page-header-cover-1 {
+    --page-header-image: url('assets/cover1.jpg');
+    --page-header-position: center 40%;
+}
+
+.page-header-cover-2 {
+    --page-header-image: url('assets/cover2.jpg');
+    --page-header-position: center 30%;
+}
+
+.page-header-cover-3 {
+    --page-header-image: url('assets/cover3.jpg');
+    --page-header-position: center 30%;
+}
+
+.page-header-cover-4 {
+    --page-header-image: url('assets/cover4.jpg');
+    --page-header-position: center 90%;
+}
+
+.page-header-cover-5 {
+    --page-header-image: url('assets/cover5.jpg');
+    --page-header-position: center 85%;
 }
 
 .page-header::after {
@@ -1193,6 +1220,170 @@ body {
     font-weight: 600;
 }
 
+.venue-section {
+    position: relative;
+    padding: 5.5rem 0 5.8rem;
+    background:
+        radial-gradient(circle at 14% 18%, rgba(255, 245, 228, 0.74), transparent 18%),
+        radial-gradient(circle at 84% 16%, rgba(184, 220, 196, 0.36), transparent 24%),
+        linear-gradient(180deg, #fcf7ef 0%, #f6eee1 52%, #f0e5d6 100%);
+    overflow: hidden;
+}
+
+.venue-section::before {
+    content: '';
+    position: absolute;
+    inset: auto auto -6rem -4rem;
+    width: 18rem;
+    height: 18rem;
+    background: url('assets/flowers-hero-cropped.png') center center / contain no-repeat;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.venue-shell {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 2.4rem 3rem;
+    align-items: start;
+}
+
+.venue-copy {
+    max-width: 31rem;
+}
+
+.venue-kicker {
+    margin-bottom: 0.9rem;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #8d6c35;
+}
+
+.venue-title {
+    margin-bottom: 1.2rem;
+    font-family: 'Allura', 'Great Vibes', cursive;
+    font-size: clamp(3rem, 5vw, 4.6rem);
+    font-weight: 400;
+    line-height: 0.9;
+    color: #566f5f;
+}
+
+.venue-description {
+    margin-bottom: 1.8rem;
+    color: #60584d;
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+.venue-detail-grid {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1.9rem;
+}
+
+.venue-detail-card {
+    padding: 1.2rem 1.25rem;
+    background: rgba(255, 252, 247, 0.8);
+    border: 1px solid rgba(194, 161, 108, 0.22);
+    border-left: 4px solid rgba(163, 115, 40, 0.72);
+    box-shadow: 0 16px 30px rgba(118, 96, 62, 0.08);
+    backdrop-filter: blur(6px);
+}
+
+.venue-detail-card h3 {
+    margin-bottom: 0.45rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8c6730;
+}
+
+.venue-detail-card p {
+    color: #5e584e;
+    font-size: 0.96rem;
+    line-height: 1.7;
+}
+
+.venue-detail-card p + p {
+    margin-top: 0.15rem;
+}
+
+.venue-visuals {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.venue-photo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 1rem;
+    align-items: end;
+}
+
+.venue-photo {
+    position: relative;
+    margin: 0;
+    padding: 0.7rem;
+    background: rgba(255, 252, 246, 0.92);
+    border: 1px solid rgba(192, 161, 109, 0.22);
+    box-shadow: 0 24px 40px rgba(118, 97, 64, 0.14);
+}
+
+.venue-photo::before {
+    content: '';
+    position: absolute;
+    inset: 0.7rem;
+    border: 1px solid rgba(196, 161, 101, 0.16);
+    pointer-events: none;
+}
+
+.venue-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 15rem;
+    object-fit: cover;
+}
+
+.venue-photo-large {
+    transform: rotate(-2.4deg);
+}
+
+.venue-photo-small {
+    transform: translateY(1.8rem) rotate(2.6deg);
+}
+
+.venue-photo-small img {
+    min-height: 12.8rem;
+}
+
+.venue-map-card {
+    padding: 0.8rem;
+    background: linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(248, 240, 229, 0.96));
+    border: 1px solid rgba(191, 158, 104, 0.24);
+    box-shadow: 0 26px 42px rgba(113, 92, 58, 0.12);
+}
+
+.venue-map-frame {
+    overflow: hidden;
+    border: 1px solid rgba(182, 149, 93, 0.2);
+    aspect-ratio: 16 / 9;
+}
+
+.venue-map {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
 @media (max-width: 1100px) {
     .hero-layout {
         grid-template-columns: repeat(10, minmax(0, 1fr));
@@ -1235,6 +1426,15 @@ body {
 
     .attire-layout {
         grid-template-columns: 1fr;
+    }
+
+    .venue-shell {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .venue-copy {
+        max-width: 100%;
     }
 
     .home-notes-grid {
@@ -1340,7 +1540,7 @@ body {
 
     .page-header {
         margin-top: 60px;
-        padding: 3.5rem 6% 1.7rem;
+        padding: 5.1rem 6% 3rem;
     }
 
     .page-title {
@@ -1498,6 +1698,22 @@ body {
 
     .intro-panel-inner {
         padding: 3.25rem 1.5rem;
+    }
+
+    .venue-section {
+        padding: 4.3rem 0 4.4rem;
+    }
+
+    .venue-photo-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .venue-photo img {
+        min-height: 13rem;
+    }
+
+    .venue-photo-small {
+        transform: translateY(1rem) rotate(2deg);
     }
 
     .gentle-reminders-section {
@@ -1726,6 +1942,42 @@ body {
 
     .hero-photo-monogram {
         font-size: clamp(3.1rem, 17vw, 4.7rem);
+    }
+
+    .venue-section {
+        padding: 3.7rem 0 4rem;
+    }
+
+    .venue-title {
+        font-size: clamp(2.35rem, 12vw, 3.2rem);
+    }
+
+    .venue-description {
+        font-size: 0.93rem;
+        line-height: 1.75;
+    }
+
+    .venue-detail-card {
+        padding: 1rem;
+    }
+
+    .venue-detail-card p {
+        font-size: 0.9rem;
+    }
+
+    .venue-photo-grid {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+    }
+
+    .venue-photo-large,
+    .venue-photo-small {
+        transform: none;
+    }
+
+    .venue-photo img,
+    .venue-photo-small img {
+        min-height: 11.5rem;
     }
 
     .gentle-reminders-paper {
