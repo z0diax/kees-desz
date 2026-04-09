@@ -38,25 +38,107 @@
     line-height: 2;
 }
 
-.story-image {
+.story-visual {
     display: flex;
     justify-content: center;
 }
 
-.story-photo {
-    width: min(100%, 26rem);
-    aspect-ratio: 3/4;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(180, 204, 190, 0.2);
-    transition: all 0.3s ease;
+.story-collage {
+    position: relative;
+    width: min(100%, 34rem);
+    min-height: 40rem;
+    padding: 2rem 1rem 1rem;
 }
 
-.story-photo:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 60px rgba(180, 204, 190, 0.3);
+.story-collage::before,
+.story-collage::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+}
+
+.story-collage::before {
+    inset: 8% 10% 16%;
+    border-radius: 2rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0));
+    border: 1px solid rgba(186, 160, 117, 0.16);
+}
+
+.story-collage::after {
+    right: 1rem;
+    bottom: 2rem;
+    width: 10rem;
+    height: 10rem;
+    background: radial-gradient(circle, rgba(184, 220, 196, 0.34), transparent 68%);
+}
+
+.story-memory {
+    position: absolute;
+    margin: 0;
+    padding: 0.85rem;
+    background: rgba(255, 252, 246, 0.96);
+    border: 1px solid rgba(196, 165, 113, 0.2);
+    box-shadow: 0 22px 40px rgba(131, 110, 74, 0.16);
+    backdrop-filter: blur(6px);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.story-memory::before {
+    content: '';
+    position: absolute;
+    top: -0.65rem;
+    left: 50%;
+    width: 4.1rem;
+    height: 1rem;
+    background: rgba(255, 248, 235, 0.82);
+    border: 1px solid rgba(206, 180, 138, 0.26);
+    box-shadow: 0 8px 18px rgba(118, 99, 64, 0.08);
+    transform: translateX(-50%) rotate(-5deg);
+}
+
+.story-memory:hover {
+    box-shadow: 0 28px 52px rgba(131, 110, 74, 0.22);
+}
+
+.story-memory-primary {
+    top: 0;
+    left: 0;
+    width: min(100%, 21rem);
+    transform: rotate(-7deg);
+    z-index: 2;
+}
+
+.story-memory-primary:hover {
+    transform: rotate(-5deg) translateY(-0.4rem);
+}
+
+.story-memory-secondary {
+    right: 0;
+    top: 11rem;
+    width: min(100%, 18rem);
+    transform: rotate(8deg);
+    z-index: 3;
+}
+
+.story-memory-secondary:hover {
+    transform: rotate(6deg) translateY(-0.4rem);
+}
+
+.story-photo {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    display: block;
+    object-fit: cover;
+    border-radius: 0.9rem;
+    box-shadow: 0 14px 30px rgba(180, 204, 190, 0.18);
+}
+
+.story-memory-primary .story-photo {
+    object-position: center 34%;
+}
+
+.story-memory-secondary .story-photo {
+    object-position: center 36%;
 }
 
 /* Timeline Section */
@@ -224,6 +306,25 @@
         gap: 2rem;
     }
 
+    .story-visual {
+        order: -1;
+    }
+
+    .story-collage {
+        width: min(100%, 28rem);
+        min-height: 35rem;
+        padding-top: 1.6rem;
+    }
+
+    .story-memory-primary {
+        width: min(100%, 17rem);
+    }
+
+    .story-memory-secondary {
+        top: 9.8rem;
+        width: min(100%, 15rem);
+    }
+
     .story::before {
         left: -7rem;
         bottom: -9rem;
@@ -258,4 +359,54 @@
         font-size: 0.98rem;
         line-height: 1.8;
     }
+}
+
+@media (max-width: 560px) {
+    .story-collage {
+        min-height: auto;
+        display: grid;
+        gap: 1rem;
+        padding: 1.25rem 0 0;
+    }
+
+    .story-collage::before {
+        inset: 0.75rem 0 6rem;
+    }
+
+    .story-collage::after {
+        right: -0.5rem;
+        bottom: 4.2rem;
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .story-memory,
+    .story-memory-primary,
+    .story-memory-secondary {
+        position: relative;
+        top: auto;
+        right: auto;
+        left: auto;
+        width: 100%;
+        max-width: 18rem;
+    }
+
+    .story-memory-primary {
+        justify-self: start;
+        transform: rotate(-4deg);
+    }
+
+    .story-memory-primary:hover {
+        transform: rotate(-2deg) translateY(-0.25rem);
+    }
+
+    .story-memory-secondary {
+        justify-self: end;
+        transform: rotate(4deg);
+    }
+
+    .story-memory-secondary:hover {
+        transform: rotate(2deg) translateY(-0.25rem);
+    }
+
 }

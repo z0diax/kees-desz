@@ -1,4 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const createPetalOverlay = () => {
+        if (!document.body || document.querySelector('.petal-overlay')) {
+            return;
+        }
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
+
+        const petalOverlay = document.createElement('div');
+        const petalCount = window.innerWidth <= 560 ? 7 : window.innerWidth <= 900 ? 10 : 14;
+
+        petalOverlay.className = 'petal-overlay';
+        petalOverlay.setAttribute('aria-hidden', 'true');
+
+        for (let index = 0; index < petalCount; index += 1) {
+            const petal = document.createElement('span');
+            const size = 10 + Math.random() * 12;
+            const duration = 11 + Math.random() * 9;
+            const drift = `${(Math.random() * 18 - 9).toFixed(2)}vw`;
+            const left = `${(Math.random() * 100).toFixed(2)}%`;
+            const delay = `${(-Math.random() * duration).toFixed(2)}s`;
+            const opacity = (0.22 + Math.random() * 0.24).toFixed(2);
+            const rotate = `${(Math.random() * 360).toFixed(2)}deg`;
+
+            petal.className = 'petal';
+            petal.style.setProperty('--petal-size', `${size.toFixed(2)}px`);
+            petal.style.setProperty('--petal-duration', `${duration.toFixed(2)}s`);
+            petal.style.setProperty('--petal-drift', drift);
+            petal.style.setProperty('--petal-left', left);
+            petal.style.setProperty('--petal-delay', delay);
+            petal.style.setProperty('--petal-opacity', opacity);
+            petal.style.setProperty('--petal-rotate', rotate);
+
+            petalOverlay.appendChild(petal);
+        }
+
+        document.body.appendChild(petalOverlay);
+    };
+
+    createPetalOverlay();
+
     const envelopeWrapper = document.querySelector('.envelope-wrapper');
     const sealCircle = document.querySelector('.seal-circle');
     const footerText = document.querySelector('.footer-text');
