@@ -775,6 +775,8 @@ body {
 
 .cta-button {
     display: inline-block;
+    position: relative;
+    overflow: hidden;
     background: var(--pastel-green);
     color: white;
     padding: 1.2rem 2.8rem;
@@ -785,7 +787,7 @@ body {
     text-transform: uppercase;
     text-decoration: none;
     border-radius: 50px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     border: 2px solid var(--pastel-green);
     cursor: pointer;
 }
@@ -795,6 +797,70 @@ body {
     color: var(--pastel-green-dark);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(180, 204, 190, 0.3);
+}
+
+.cta-button:focus-visible {
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.cta-button-gold {
+    background:
+        linear-gradient(135deg, #f8edc9 0%, #edcf82 34%, #d4a24f 68%, #ba8437 100%);
+    color: #5c3d16;
+    border-color: rgba(186, 132, 55, 0.78);
+    box-shadow:
+        0 14px 28px rgba(185, 136, 54, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -1px 0 rgba(143, 96, 27, 0.18);
+}
+
+.cta-button-gold::before {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.08) 42%, transparent 72%);
+    pointer-events: none;
+}
+
+.cta-button-gold::after {
+    content: '';
+    position: absolute;
+    top: -120%;
+    left: -35%;
+    width: 42%;
+    height: 300%;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.38) 50%, transparent 100%);
+    transform: rotate(22deg);
+    transition: transform 0.45s ease, opacity 0.45s ease;
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.cta-button-gold:hover {
+    background:
+        linear-gradient(135deg, #fcf4d9 0%, #f2d88f 32%, #ddad58 67%, #c28a3b 100%);
+    color: #4d3111;
+    border-color: rgba(194, 138, 59, 0.92);
+    transform: translateY(-4px);
+    box-shadow:
+        0 18px 34px rgba(185, 136, 54, 0.28),
+        0 0 0 1px rgba(255, 248, 221, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.cta-button-gold:hover::after,
+.cta-button-gold:focus-visible::after {
+    transform: translateX(220%) rotate(22deg);
+}
+
+.cta-button-gold:focus-visible {
+    color: #4d3111;
+    border-color: rgba(194, 138, 59, 0.92);
+    box-shadow:
+        0 0 0 4px rgba(231, 198, 132, 0.28),
+        0 16px 30px rgba(185, 136, 54, 0.24);
 }
 
 /* Intro Section */
