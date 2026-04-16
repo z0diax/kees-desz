@@ -249,12 +249,36 @@ const galleryImages = Array.from(document.querySelectorAll('.gallery-grid .galle
 if (galleryLightbox && galleryLightboxImage && galleryImages.length) {
     let currentImageIndex = 0;
 
+    const preloadImage = source => {
+        if (!source) {
+            return;
+        }
+
+        const img = new Image();
+        img.decoding = 'async';
+        img.src = source;
+    };
+
+    const preloadAroundIndex = index => {
+        const normalizedIndex = (index + galleryImages.length) % galleryImages.length;
+        const next1 = galleryImages[(normalizedIndex + 1) % galleryImages.length]?.src;
+        const prev1 = galleryImages[(normalizedIndex - 1 + galleryImages.length) % galleryImages.length]?.src;
+        const next2 = galleryImages[(normalizedIndex + 2) % galleryImages.length]?.src;
+        const prev2 = galleryImages[(normalizedIndex - 2 + galleryImages.length) % galleryImages.length]?.src;
+
+        preloadImage(next1);
+        preloadImage(prev1);
+        preloadImage(next2);
+        preloadImage(prev2);
+    };
+
     const renderLightboxImage = index => {
         const normalizedIndex = (index + galleryImages.length) % galleryImages.length;
         currentImageIndex = normalizedIndex;
         const image = galleryImages[currentImageIndex];
         galleryLightboxImage.src = image.src;
         galleryLightboxImage.alt = image.alt || 'Enlarged gallery image';
+        preloadAroundIndex(currentImageIndex);
     };
 
     const openLightbox = index => {
@@ -277,8 +301,19 @@ if (galleryLightbox && galleryLightboxImage && galleryImages.length) {
 
     galleryImages.forEach((image, index) => {
         image.style.cursor = 'zoom-in';
+        image.decoding = 'async';
+        if (index < 12) {
+            image.loading = 'eager';
+            image.fetchPriority = index < 4 ? 'high' : 'auto';
+        } else {
+            image.loading = 'lazy';
+            image.fetchPriority = 'low';
+        }
         image.addEventListener('click', () => openLightbox(index));
     });
+
+    // Warm cache for first screen and first lightbox transitions
+    galleryImages.slice(0, 8).forEach(image => preloadImage(image.src));
 
     if (galleryLightboxClose) {
         galleryLightboxClose.addEventListener('click', closeLightbox);
