@@ -319,33 +319,32 @@ if (galleryLightbox && galleryLightboxImage && galleryImages.length) {
         galleryLightboxClose.addEventListener('click', closeLightbox);
     }
 
-    if (galleryLightboxNext) {
-        galleryLightboxNext.addEventListener('click', event => {
-            event.stopPropagation();
-            showNextImage();
-        });
-    }
+    const bindNavControl = (element, navigateFn) => {
+        if (!element) {
+            return;
+        }
 
-    if (galleryLightboxPrev) {
-        galleryLightboxPrev.addEventListener('click', event => {
-            event.stopPropagation();
-            showPrevImage();
-        });
-    }
+        let lastTriggerAt = 0;
+        const triggerNavigation = event => {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
 
-    const handleNavTouch = (event, navigateFn) => {
-        event.preventDefault();
-        event.stopPropagation();
-        navigateFn();
+            const now = Date.now();
+            if (now - lastTriggerAt < 220) {
+                return;
+            }
+            lastTriggerAt = now;
+            navigateFn();
+        };
+
+        // Single source of truth: click only (works for desktop + mobile tap)
+        element.addEventListener('click', triggerNavigation);
     };
 
-    if (galleryLightboxNext) {
-        galleryLightboxNext.addEventListener('touchstart', event => handleNavTouch(event, showNextImage), { passive: false });
-    }
-
-    if (galleryLightboxPrev) {
-        galleryLightboxPrev.addEventListener('touchstart', event => handleNavTouch(event, showPrevImage), { passive: false });
-    }
+    bindNavControl(galleryLightboxNext, showNextImage);
+    bindNavControl(galleryLightboxPrev, showPrevImage);
 
     galleryLightbox.addEventListener('click', event => {
         if (event.target === galleryLightbox) {
