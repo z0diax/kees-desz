@@ -127,6 +127,35 @@
     background: #fff;
 }
 
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(34px, 3vw, 42px);
+    height: clamp(76px, 18vh, 140px);
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1.2rem, 1.6vw, 1.5rem);
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
 /* Quote Section */
 .quote-section {
     position: relative;
@@ -337,5 +366,21 @@
         width: 40px;
         height: 40px;
         font-size: 1.6rem;
+    }
+
+    .lightbox-nav {
+        width: 34px;
+        height: 92px;
+        font-size: 1.25rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.14);
+    }
+
+    .lightbox-prev {
+        left: 20px;
+    }
+
+    .lightbox-next {
+        right: 20px;
     }
 }

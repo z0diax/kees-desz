@@ -242,12 +242,23 @@ document.querySelectorAll('.fade-in').forEach(el => {
 const galleryLightbox = document.querySelector('#galleryLightbox');
 const galleryLightboxImage = galleryLightbox ? galleryLightbox.querySelector('.lightbox-image') : null;
 const galleryLightboxClose = galleryLightbox ? galleryLightbox.querySelector('.lightbox-close') : null;
-const galleryImages = document.querySelectorAll('.gallery-grid .gallery-image');
+const galleryLightboxPrev = galleryLightbox ? galleryLightbox.querySelector('.lightbox-prev') : null;
+const galleryLightboxNext = galleryLightbox ? galleryLightbox.querySelector('.lightbox-next') : null;
+const galleryImages = Array.from(document.querySelectorAll('.gallery-grid .gallery-image'));
 
 if (galleryLightbox && galleryLightboxImage && galleryImages.length) {
-    const openLightbox = sourceImage => {
-        galleryLightboxImage.src = sourceImage.src;
-        galleryLightboxImage.alt = sourceImage.alt || 'Enlarged gallery image';
+    let currentImageIndex = 0;
+
+    const renderLightboxImage = index => {
+        const normalizedIndex = (index + galleryImages.length) % galleryImages.length;
+        currentImageIndex = normalizedIndex;
+        const image = galleryImages[currentImageIndex];
+        galleryLightboxImage.src = image.src;
+        galleryLightboxImage.alt = image.alt || 'Enlarged gallery image';
+    };
+
+    const openLightbox = index => {
+        renderLightboxImage(index);
         galleryLightbox.classList.add('is-open');
         galleryLightbox.setAttribute('aria-hidden', 'false');
         document.body.classList.add('menu-open');
@@ -261,13 +272,44 @@ if (galleryLightbox && galleryLightboxImage && galleryImages.length) {
         document.body.classList.remove('menu-open');
     };
 
-    galleryImages.forEach(image => {
+    const showNextImage = () => renderLightboxImage(currentImageIndex + 1);
+    const showPrevImage = () => renderLightboxImage(currentImageIndex - 1);
+
+    galleryImages.forEach((image, index) => {
         image.style.cursor = 'zoom-in';
-        image.addEventListener('click', () => openLightbox(image));
+        image.addEventListener('click', () => openLightbox(index));
     });
 
     if (galleryLightboxClose) {
         galleryLightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    if (galleryLightboxNext) {
+        galleryLightboxNext.addEventListener('click', event => {
+            event.stopPropagation();
+            showNextImage();
+        });
+    }
+
+    if (galleryLightboxPrev) {
+        galleryLightboxPrev.addEventListener('click', event => {
+            event.stopPropagation();
+            showPrevImage();
+        });
+    }
+
+    const handleNavTouch = (event, navigateFn) => {
+        event.preventDefault();
+        event.stopPropagation();
+        navigateFn();
+    };
+
+    if (galleryLightboxNext) {
+        galleryLightboxNext.addEventListener('touchstart', event => handleNavTouch(event, showNextImage), { passive: false });
+    }
+
+    if (galleryLightboxPrev) {
+        galleryLightboxPrev.addEventListener('touchstart', event => handleNavTouch(event, showPrevImage), { passive: false });
     }
 
     galleryLightbox.addEventListener('click', event => {
@@ -277,8 +319,16 @@ if (galleryLightbox && galleryLightboxImage && galleryImages.length) {
     });
 
     document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && galleryLightbox.classList.contains('is-open')) {
+        if (!galleryLightbox.classList.contains('is-open')) {
+            return;
+        }
+
+        if (event.key === 'Escape') {
             closeLightbox();
+        } else if (event.key === 'ArrowRight') {
+            showNextImage();
+        } else if (event.key === 'ArrowLeft') {
+            showPrevImage();
         }
     });
 }
